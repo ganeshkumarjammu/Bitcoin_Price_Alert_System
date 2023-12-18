@@ -1,19 +1,18 @@
+//Download all libraries from Libraries manager
 #include <MD_Parola.h>
 #include <MD_MAX72xx.h>
 #include <SPI.h>
-
 #include <Wire.h>
 #include <HTTPClient.h>
 //#include <NTPClient.h>
 #include <WiFiUdp.h>
-
-#include <ArduinoJson.h> //downgrade using library manager to version 5.3.0
+#include <ArduinoJson.h> //upgrade to latest version of 6.x.x
 #include <WiFi.h>
 #include <WiFiClientSecure.h>
 
-//Wifi details
-char wifiSSID[] = "Texoham" ;
-char wifiPASS[] = "T3x0h@m@2k20";
+//Wifi details 
+char wifiSSID[] = "Texoham" ;  // Enter your hotspot name 
+char wifiPASS[] = "T3x0h@m@2k20"; // Enter your hotspot password
 String on_currency = "BTCGBP";
 String on_sub_currency = on_currency.substring(3);
 char conversion[20];
@@ -23,6 +22,7 @@ const uint16_t WAIT_TIME = 1000;
 
 #define HARDWARE_TYPE MD_MAX72XX::FC16_HW //If your LEDs look odd try replacing ICSTATION_HW with one of these GENERIC_HW, FC16_HW, PAROLA_HW .
 
+//Connections and Pinout
 #define MAX_DEVICES 4
 #define CLK_PIN   18
 #define DATA_PIN  23
@@ -83,18 +83,6 @@ void loop(void)
     strcpy(curMessage, "Bitcoin Price Alert System");
     P.displayReset();
   }
-  //     if (P.displayAnimate())
-  //     {if (newMessageAvailable){
-  //      on_rates();
-  //      strcpy(curMessage, conversion);
-  //    }P.displayReset();}
-
-  //  if (P.displayAnimate())
-  //  { if (newMessageAvailable) {
-  //      strcpy(curMessage, "Bitcoin seems to be a very promising idea.");
-  //      Serial.println("Bitcoin seems to be a very promising idea.");
-  //    } P.displayReset();
-  //  }
 
   if (P.displayAnimate())
   { if (newMessageAvailable) {
